@@ -1,0 +1,749 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Floricultura Minami — Flores de primeira linha no Centro de São Bernardo</title>
+<meta name="description" content="Buquês, cestas de rosas e orquídeas de primeira linha, com o preço mais justo do ABC. Monte sua encomenda pelo site e receba onde quiser.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='6' y='6' width='88' height='88' rx='18' fill='%23B3364F'/><text x='50' y='70' font-size='58' text-anchor='middle' fill='%23FBF7F1' font-family='serif' font-weight='700'>南</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700&text=%E5%8D%97&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FBF7F1;
+    --cream:#F4ECE2;
+    --sand:#EADFD0;
+    --ink:#1E2621;
+    --ink-soft:#5B635D;
+    --forest:#24403A;
+    --forest-deep:#162A25;
+    --rose:#B3364F;
+    --rose-deep:#8E2238;
+    --blush:#F2DAD3;
+    --gold:#B48A4A;
+    --line:rgba(30,38,33,.12);
+    --radius:22px;
+    --wrap:1240px;
+    --ease:cubic-bezier(.2,.7,.2,1);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:Figtree,system-ui,sans-serif;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  body.drawer-open{overflow:hidden}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  button,input,select,textarea{font:inherit;color:inherit}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 28px}
+  h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;letter-spacing:-.01em;line-height:1.02}
+  h2{font-size:clamp(40px,5.4vw,70px)}
+  h2 em,h1 em{font-style:italic;color:var(--rose)}
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:var(--rose)}
+  .eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+
+  /* Hanko seal — 南 (minami) */
+  .hanko{width:46px;height:46px;flex:none;border-radius:10px;background:var(--rose);color:var(--paper);display:grid;place-items:center;font-family:"Noto Serif JP",serif;font-weight:700;font-size:27px;line-height:1;transform:rotate(-4deg);box-shadow:inset 0 0 0 2px rgba(251,247,241,.35);position:relative;overflow:hidden}
+  .hanko::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 20% 30%,rgba(251,247,241,.18) 0 2px,transparent 3px),radial-gradient(circle at 70% 75%,rgba(251,247,241,.14) 0 1.5px,transparent 2.5px),radial-gradient(circle at 80% 20%,rgba(0,0,0,.08) 0 3px,transparent 4px)}
+
+  .proposal{background:var(--forest-deep);color:#E8E1D6;font-size:13px;text-align:center;padding:10px 16px;letter-spacing:.01em}
+  .proposal b{color:#F2C7BD;font-weight:600}
+
+  /* Nav */
+  .nav{position:sticky;top:0;z-index:50;background:rgba(251,247,241,.86);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid transparent;transition:border-color .3s}
+  .nav.scrolled{border-bottom-color:var(--line)}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:80px;gap:24px}
+  .logo{display:flex;align-items:center;gap:14px}
+  .logo-txt{line-height:1}
+  .logo-txt b{display:block;font-family:"Cormorant Garamond",serif;font-weight:600;font-size:27px;letter-spacing:.01em}
+  .logo-txt small{display:block;font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-soft);margin-top:4px;font-weight:600}
+  .menu{display:flex;gap:32px;font-size:15px;font-weight:500}
+  .menu a{position:relative;padding:4px 0}
+  .menu a::after{content:"";position:absolute;left:0;bottom:-2px;height:1px;width:100%;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+  .menu a:hover::after{transform:scaleX(1)}
+  .nav-actions{display:flex;align-items:center;gap:10px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border-radius:999px;padding:14px 24px;font-weight:600;font-size:15px;transition:transform .25s var(--ease),background .25s,box-shadow .25s,color .25s;white-space:nowrap;border:0;cursor:pointer}
+  .btn svg{width:18px;height:18px;flex:none}
+  .btn-primary{background:var(--forest);color:#fff}
+  .btn-primary:hover{background:var(--forest-deep);transform:translateY(-2px);box-shadow:0 12px 26px -12px rgba(22,42,37,.7)}
+  .btn-rose{background:var(--rose);color:#fff}
+  .btn-rose:hover{background:var(--rose-deep);transform:translateY(-2px);box-shadow:0 12px 26px -12px rgba(142,34,56,.7)}
+  .btn-ghost{background:transparent;border:1px solid var(--ink);color:var(--ink)}
+  .btn-ghost:hover{background:var(--ink);color:var(--paper)}
+  .bag-btn{position:relative;width:48px;height:48px;border-radius:50%;border:1px solid var(--line);background:#fff;display:grid;place-items:center;cursor:pointer;transition:transform .25s var(--ease),border-color .25s}
+  .bag-btn:hover{transform:translateY(-2px);border-color:var(--ink)}
+  .bag-btn svg{width:22px;height:22px}
+  .count{position:absolute;top:-4px;right:-4px;min-width:21px;height:21px;padding:0 6px;border-radius:999px;background:var(--rose);color:#fff;font-size:12px;font-weight:700;display:grid;place-items:center;transform:scale(0);transition:transform .3s var(--ease)}
+  .count.show{transform:scale(1)}
+  .count.bump{animation:bump .4s var(--ease)}
+  @keyframes bump{40%{transform:scale(1.35)}}
+  .burger{display:none;background:none;border:0;width:44px;height:44px;cursor:pointer}
+  .burger svg{width:26px;height:26px}
+
+  /* Hero */
+  .hero{position:relative;padding:clamp(40px,6vw,80px) 0 clamp(60px,8vw,110px);overflow:hidden}
+  .hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(36px,5vw,80px);align-items:center}
+  .hero h1{font-size:clamp(50px,6.6vw,96px);margin:22px 0 24px}
+  .hero p.lead{font-size:clamp(17px,1.4vw,19.5px);color:var(--ink-soft);max-width:520px}
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+  .trust{display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:40px;padding-top:28px;border-top:1px solid var(--line)}
+  .trust div{display:flex;align-items:center;gap:10px;font-size:14.5px;color:var(--ink-soft)}
+  .trust b{font-family:"Cormorant Garamond",serif;font-size:30px;font-weight:600;color:var(--ink);line-height:1}
+  .trust .stars{color:var(--gold);letter-spacing:1px;font-size:13px}
+  .trust svg{width:20px;height:20px;color:var(--rose)}
+  .hero-art{position:relative;justify-self:center;width:min(100%,480px)}
+  .arch{position:relative;border-radius:999px 999px 30px 30px;overflow:hidden;aspect-ratio:4/5.1;background:var(--blush);box-shadow:0 40px 80px -40px rgba(30,38,33,.45)}
+  .arch img{width:100%;height:100%;object-fit:cover;object-position:50% 40%;transform:scale(1.06);animation:heroZoom 12s var(--ease) forwards}
+  @keyframes heroZoom{to{transform:scale(1)}}
+  .arch-outline{position:absolute;inset:-16px -16px auto auto;width:100%;height:100%;border:1px solid var(--rose);border-radius:999px 999px 30px 30px;opacity:.35;pointer-events:none;transform:translate(16px,-16px)}
+  .orb{position:absolute;left:-46px;top:16%;width:132px;height:132px;border-radius:50%;overflow:hidden;border:6px solid var(--paper);box-shadow:0 20px 40px -20px rgba(30,38,33,.5);animation:float 7s ease-in-out infinite}
+  .orb img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+  .float-card{position:absolute;right:-30px;bottom:44px;background:#fff;border-radius:18px;padding:14px 18px;box-shadow:0 24px 50px -24px rgba(30,38,33,.45);display:flex;gap:12px;align-items:center;animation:float 7s ease-in-out infinite;animation-delay:-3.5s}
+  .float-card .dot{width:40px;height:40px;border-radius:50%;background:var(--blush);display:grid;place-items:center;color:var(--rose)}
+  .float-card .dot svg{width:20px;height:20px}
+  .float-card b{display:block;font-size:14.5px}
+  .float-card small{font-size:13px;color:var(--ink-soft)}
+  @keyframes float{50%{transform:translateY(-8px)}}
+  .sprig{position:absolute;pointer-events:none;color:var(--rose);opacity:.55}
+  .sprig.s1{right:-80px;top:-70px;width:170px;height:382px;transform:rotate(18deg)}
+  .sprig.s2{left:-40px;bottom:-70px;width:120px;height:240px;color:var(--forest);opacity:.35;transform:rotate(-14deg) scaleX(-1)}
+
+  /* Marquee */
+  .marquee{border-block:1px solid var(--line);padding:20px 0;overflow:hidden;background:var(--cream)}
+  .marquee-track{display:flex;width:max-content;animation:mq 40s linear infinite}
+  .marquee span{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:clamp(24px,2.6vw,32px);display:flex;align-items:center;gap:34px;padding-right:34px;white-space:nowrap;color:var(--forest)}
+  .marquee span::after{content:"南";font-family:"Noto Serif JP",serif;font-style:normal;font-size:.5em;color:#fff;background:var(--rose);width:22px;height:22px;border-radius:5px;display:grid;place-items:center}
+  @keyframes mq{to{transform:translateX(-50%)}}
+
+  section{padding:clamp(80px,10vw,130px) 0}
+  .section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;margin-bottom:44px;flex-wrap:wrap}
+  .section-head h2{margin-top:14px;max-width:700px}
+  .section-head p{max-width:430px;color:var(--ink-soft)}
+
+  /* Catalog */
+  .filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:34px}
+  .filter{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 20px;font-weight:600;font-size:14.5px;cursor:pointer;transition:all .25s var(--ease)}
+  .filter:hover{border-color:var(--ink)}
+  .filter.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .catalog{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  .item{display:flex;flex-direction:column;transition:opacity .35s,transform .35s var(--ease)}
+  .item.hide{display:none}
+  .item-img{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:4/5;background:var(--cream)}
+  .item-img img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+  .item:hover .item-img img{transform:scale(1.05)}
+  .tag{position:absolute;top:16px;left:16px;background:rgba(251,247,241,.94);font-size:12px;font-weight:700;letter-spacing:.04em;padding:7px 12px;border-radius:999px}
+  .tag.rose{background:var(--rose);color:#fff}
+  .add{position:absolute;right:16px;bottom:16px;height:48px;padding:0 18px 0 14px;border-radius:999px;border:0;background:var(--paper);display:flex;align-items:center;gap:8px;font-weight:700;font-size:14px;cursor:pointer;box-shadow:0 10px 24px -12px rgba(0,0,0,.5);transition:transform .3s var(--ease),background .3s,color .3s}
+  .add svg{width:18px;height:18px}
+  .add:hover{transform:translateY(-2px);background:var(--rose);color:#fff}
+  .add.added{background:var(--forest);color:#fff}
+  .item-body{padding:18px 4px 0}
+  .item-body h3{font-size:29px;font-weight:600}
+  .item-body p{font-size:15px;color:var(--ink-soft);margin-top:4px}
+  .item-body .meta{display:flex;justify-content:space-between;align-items:center;margin-top:10px;font-size:13.5px;font-weight:600;color:var(--forest)}
+  .item-body .meta span:last-child{color:var(--ink-soft);font-weight:500}
+  .custom{margin-top:44px;border-radius:24px;background:var(--blush);padding:clamp(28px,4vw,44px);display:grid;grid-template-columns:auto 1fr auto;gap:28px;align-items:center}
+  .custom svg.ill{width:96px;height:96px;color:var(--rose)}
+  .custom h3{font-size:clamp(28px,3vw,38px)}
+  .custom p{color:var(--ink-soft);margin-top:6px}
+  .occasions{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+  .occasions a{font-size:13.5px;font-weight:600;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.7);transition:background .25s}
+  .occasions a:hover{background:#fff}
+
+  /* Store */
+  .store{background:var(--forest);color:#EEE7DB;position:relative;overflow:hidden}
+  .store .eyebrow{color:#F2C7BD}
+  .store h2{color:#fff}
+  .store h2 em{color:#F2C7BD}
+  .store-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,90px);align-items:center}
+  .store-photos{position:relative;height:620px}
+  .store-photos .ph{position:absolute;border-radius:22px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+  .store-photos .ph img{width:100%;height:100%;object-fit:cover}
+  .store-photos .a{left:0;top:0;width:58%;height:88%}
+  .store-photos .b{right:0;bottom:0;width:50%;height:64%;border:6px solid var(--forest)}
+  .store-photos .stamp{position:absolute;right:8%;top:6%;width:120px;height:120px;color:#F2C7BD;animation:spin 30s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .store p{color:rgba(238,231,219,.8);margin-top:20px;max-width:520px}
+  .points{display:grid;gap:20px;margin-top:36px}
+  .point{display:flex;gap:16px;align-items:flex-start}
+  .point .ic{width:46px;height:46px;flex:none;border-radius:50%;border:1px solid rgba(242,199,189,.4);display:grid;place-items:center;color:#F2C7BD}
+  .point .ic svg{width:22px;height:22px}
+  .point b{display:block;color:#fff;font-size:17px}
+  .point span{font-size:15px;color:rgba(238,231,219,.72)}
+
+  /* Steps */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .step{background:#fff;border:1px solid var(--line);border-radius:24px;padding:34px 30px;transition:transform .4s var(--ease),box-shadow .4s}
+  .step:hover{transform:translateY(-6px);box-shadow:0 30px 60px -36px rgba(30,38,33,.4)}
+  .step svg{width:84px;height:84px;color:var(--rose)}
+  .step .n{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:22px;color:var(--gold);margin-top:18px;display:block}
+  .step h3{font-size:31px;font-weight:600;margin:4px 0 8px}
+  .step p{color:var(--ink-soft);font-size:15.5px}
+
+  /* Reviews */
+  .reviews{background:var(--cream)}
+  .rating-big{display:flex;align-items:center;gap:20px}
+  .rating-big b{font-family:"Cormorant Garamond",serif;font-size:clamp(72px,8vw,110px);font-weight:500;line-height:.8}
+  .rating-big .stars{color:var(--gold);font-size:20px;letter-spacing:2px}
+  .rating-big small{display:block;color:var(--ink-soft);font-size:14.5px}
+  .wall{columns:3;column-gap:22px}
+  .quote,.moment{break-inside:avoid;margin-bottom:22px}
+  .quote{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:28px}
+  .quote q{font-family:"Cormorant Garamond",serif;font-size:clamp(22px,2vw,26px);line-height:1.3;display:block;quotes:"“" "”"}
+  .quote.feature{background:var(--forest);color:#fff;border:0}
+  .quote.feature q{font-size:clamp(26px,2.4vw,32px)}
+  .quote .who{display:flex;align-items:center;gap:10px;margin-top:18px;font-size:14px;color:var(--ink-soft)}
+  .quote.feature .who{color:rgba(255,255,255,.7)}
+  .av{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-weight:700;color:#fff;font-size:14px}
+  .moment{position:relative;border-radius:22px;overflow:hidden}
+  .moment img{width:100%;height:auto}
+  .moment span{position:absolute;left:14px;bottom:14px;background:rgba(251,247,241,.94);font-size:12.5px;font-weight:700;padding:7px 12px;border-radius:999px}
+
+  /* Visit */
+  .visit-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:22px}
+  .visit-card{background:#fff;border:1px solid var(--line);border-radius:26px;padding:clamp(32px,4vw,52px);display:flex;flex-direction:column;gap:26px}
+  .info{display:grid;gap:20px}
+  .info>div{display:flex;gap:16px;align-items:flex-start}
+  .info svg{width:22px;height:22px;flex:none;color:var(--rose);margin-top:3px}
+  .info b{display:block}
+  .info span,.info a{color:var(--ink-soft);font-size:15.5px}
+  .info a:hover{color:var(--ink)}
+  .map{border-radius:26px;overflow:hidden;min-height:480px;border:1px solid var(--line)}
+  .map iframe{width:100%;height:100%;min-height:480px;border:0;filter:sepia(.15) saturate(.85)}
+
+  /* Closing band */
+  .closing{padding:0 0 clamp(80px,10vw,120px)}
+  .band{position:relative;overflow:hidden;border-radius:30px;background:var(--rose);color:#fff;padding:clamp(44px,6vw,84px);display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center}
+  .band h2{color:#fff;max-width:680px}
+  .band h2 em{color:#FCE3DC}
+  .band .btn{background:var(--paper);color:var(--ink)}
+  .band .btn:hover{background:#fff}
+  .band .sprig{right:-10px;bottom:-120px;width:200px;height:450px;color:#fff;opacity:.2;top:auto;transform:rotate(-12deg)}
+
+  footer{background:var(--forest-deep);color:rgba(238,231,219,.72);padding:56px 0 40px;font-size:14px}
+  footer .wrap{display:flex;justify-content:space-between;gap:28px;flex-wrap:wrap;align-items:center}
+  footer .logo-txt b{color:#fff}
+  footer .logo-txt small{color:rgba(238,231,219,.55)}
+  .credit{width:100%;text-align:center;padding-top:26px;margin-top:6px;border-top:1px solid rgba(238,231,219,.12);font-size:13px}
+  .credit b{color:#F2C7BD;font-weight:600}
+
+  /* Floating */
+  .fab{position:fixed;right:22px;bottom:22px;z-index:60;width:60px;height:60px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 14px 30px -10px rgba(37,211,102,.7);transition:transform .3s var(--ease)}
+  .fab:hover{transform:scale(1.08)}
+  .fab svg{width:29px;height:29px}
+  .bag-pill{position:fixed;left:50%;bottom:22px;z-index:60;transform:translate(-50%,140%);background:var(--ink);color:var(--paper);border:0;border-radius:999px;padding:14px 22px;display:flex;align-items:center;gap:12px;font-weight:600;font-size:15px;cursor:pointer;box-shadow:0 20px 40px -16px rgba(0,0,0,.6);transition:transform .45s var(--ease)}
+  .bag-pill.show{transform:translate(-50%,0)}
+  .bag-pill svg{width:20px;height:20px}
+  .bag-pill i{font-style:normal;background:var(--rose);border-radius:999px;padding:2px 9px;font-size:13px}
+  .toast{position:fixed;left:50%;top:96px;z-index:70;transform:translate(-50%,-20px);opacity:0;background:var(--forest);color:#fff;padding:12px 20px;border-radius:999px;font-weight:600;font-size:14.5px;transition:all .35s var(--ease);pointer-events:none;box-shadow:0 16px 30px -16px rgba(0,0,0,.5)}
+  .toast.show{opacity:1;transform:translate(-50%,0)}
+
+  /* Drawer */
+  .scrim{position:fixed;inset:0;z-index:80;background:rgba(22,42,37,.45);backdrop-filter:blur(3px);opacity:0;pointer-events:none;transition:opacity .35s}
+  .scrim.open{opacity:1;pointer-events:auto}
+  .drawer{position:fixed;top:0;right:0;bottom:0;z-index:85;width:min(460px,100%);background:var(--paper);box-shadow:-30px 0 60px -30px rgba(0,0,0,.4);transform:translateX(105%);transition:transform .45s var(--ease);display:flex;flex-direction:column}
+  .drawer.open{transform:none}
+  .drawer-head{display:flex;justify-content:space-between;align-items:center;padding:24px 26px;border-bottom:1px solid var(--line)}
+  .drawer-head h3{font-size:30px;font-weight:600}
+  .x{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:#fff;cursor:pointer;display:grid;place-items:center}
+  .x svg{width:18px;height:18px}
+  .drawer-body{flex:1;overflow:auto;padding:20px 26px 26px}
+  .empty{text-align:center;padding:30px 10px;color:var(--ink-soft)}
+  .empty svg{width:90px;height:90px;color:var(--rose);margin:0 auto 12px}
+  .line{display:flex;gap:14px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+  .line img{width:64px;height:76px;object-fit:cover;border-radius:12px}
+  .line .nm{flex:1;font-weight:600;font-size:15px;line-height:1.3}
+  .qty{display:flex;align-items:center;border:1px solid var(--line);border-radius:999px}
+  .qty button{width:32px;height:32px;border:0;background:none;cursor:pointer;font-size:18px;line-height:1}
+  .qty span{min-width:20px;text-align:center;font-weight:700;font-size:14px}
+  .form{display:grid;gap:14px;margin-top:22px}
+  .form label{display:grid;gap:6px;font-size:13.5px;font-weight:600}
+  .form input,.form select,.form textarea{border:1px solid var(--line);background:#fff;border-radius:12px;padding:12px 14px;font-size:15px;outline:none;transition:border-color .2s,box-shadow .2s}
+  .form input:focus,.form select:focus,.form textarea:focus{border-color:var(--forest);box-shadow:0 0 0 3px rgba(36,64,58,.12)}
+  .form textarea{resize:vertical;min-height:84px}
+  .seg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .seg input{position:absolute;opacity:0;pointer-events:none}
+  .seg label{display:block;text-align:center;border:1px solid var(--line);background:#fff;border-radius:12px;padding:11px;cursor:pointer;font-weight:600;font-size:14.5px;transition:all .2s}
+  .seg input:checked+label{background:var(--forest);color:#fff;border-color:var(--forest)}
+  .seg input:focus-visible+label{outline:2px solid var(--rose);outline-offset:2px}
+  .drawer-foot{padding:18px 26px 24px;border-top:1px solid var(--line);display:grid;gap:10px;background:var(--cream)}
+  .drawer-foot small{text-align:center;color:var(--ink-soft);font-size:13px}
+  .drawer-foot small a{color:var(--ink);font-weight:600;text-decoration:underline}
+
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+
+  .mobile-menu{display:none}
+  @media (max-width:1040px){
+    .menu{display:none}
+    .nav-actions .btn{display:none}
+    .burger{display:grid;place-items:center}
+    .mobile-menu{position:fixed;left:0;right:0;top:80px;background:var(--paper);border-bottom:1px solid var(--line);padding:12px 28px 28px;display:none;flex-direction:column;z-index:49}
+    .mobile-menu.open{display:flex}
+    .mobile-menu a{padding:14px 0;border-bottom:1px solid var(--line);font-family:"Cormorant Garamond",serif;font-size:26px;font-weight:600}
+    .hero .wrap{grid-template-columns:1fr}
+    .hero-art{order:-1;width:min(86%,420px)}
+    .catalog{grid-template-columns:1fr 1fr}
+    .store-grid,.visit-grid{grid-template-columns:1fr}
+    .store-photos{height:520px}
+    .steps{grid-template-columns:1fr}
+    .wall{columns:2}
+    .custom{grid-template-columns:1fr;text-align:left}
+    .band{grid-template-columns:1fr}
+  }
+  @media (max-width:620px){
+    .wrap{padding:0 16px}
+    body{font-size:16px}
+    .nav .wrap{height:72px}
+    .mobile-menu{top:72px}
+    .logo{gap:10px}
+    .logo-txt b{font-size:22px;white-space:nowrap}
+    .logo-txt small{display:none}
+    .hanko{width:38px;height:38px;font-size:22px}
+    .toast{max-width:calc(100% - 32px);width:max-content;text-align:center;top:84px}
+    .hero{padding-top:28px}
+    .hero-art{width:78%}
+    .orb{width:96px;height:96px;left:-34px}
+    .float-card{right:-26px;bottom:24px;padding:10px 14px}
+    .float-card .dot{width:32px;height:32px}
+    .hero-ctas .btn{width:100%}
+    .trust{gap:14px 22px}
+    .catalog{grid-template-columns:1fr}
+    .wall{columns:1}
+    .store-photos{height:430px}
+    .store-photos .stamp{width:90px;height:90px}
+    .sprig.s1{right:-60px;width:130px;height:292px}
+    .fab{right:16px;bottom:16px}
+    .bag-pill{left:16px;transform:translate(0,140%);bottom:20px}
+    .bag-pill.show{transform:none}
+    footer{padding-bottom:110px}
+    .proposal{font-size:12px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation:none!important;transition:none!important}
+    .reveal{opacity:1;transform:none}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+
+<!-- Botanical line drawings (hand-made SVG symbols) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="rose-stem" viewBox="0 0 160 360" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M80 356C79 300 84 250 80 150"/>
+      <path d="M80 290c-24-2-44-18-46-40 22-2 42 14 46 40Z"/>
+      <path d="M58 270c8 2 15 6 20 12"/>
+      <path d="M81 230c22-6 38-24 36-46-22 4-36 22-36 46Z"/>
+      <path d="M100 200c-6 6-12 14-17 24"/>
+      <path d="M68 330l-8-6M90 316l8-6M74 260l-8-4"/>
+      <path d="M80 150c-26-2-44-22-38-50 4-20 22-34 40-34 20 0 38 14 40 34 4 28-14 48-42 50Z"/>
+      <path d="M58 104c4-14 16-22 26-20 12 2 20 12 18 24"/>
+      <path d="M66 112c2-10 10-16 18-14 8 2 12 10 10 18-2 6-10 10-16 6-5-3-5-10 0-12"/>
+      <path d="M44 112c-10 14-6 30 6 38M118 108c8 14 4 30-8 40"/>
+      <path d="M72 150c-6 6-14 8-22 6M88 150c6 6 14 8 22 6"/>
+    </symbol>
+    <symbol id="orchid" viewBox="0 0 220 220" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 210C40 140 90 70 200 30"/>
+      <g transform="translate(70 120)"><ellipse rx="10" ry="20" transform="rotate(-20)"/><ellipse rx="10" ry="20" transform="rotate(50)"/><ellipse rx="10" ry="20" transform="rotate(120)"/><ellipse rx="7" ry="16" transform="rotate(190)"/><ellipse rx="7" ry="16" transform="rotate(260)"/><circle r="4"/></g>
+      <g transform="translate(118 82) scale(.85)"><ellipse rx="10" ry="20" transform="rotate(-10)"/><ellipse rx="10" ry="20" transform="rotate(60)"/><ellipse rx="10" ry="20" transform="rotate(130)"/><ellipse rx="7" ry="16" transform="rotate(200)"/><ellipse rx="7" ry="16" transform="rotate(270)"/><circle r="4"/></g>
+      <g transform="translate(160 56) scale(.68)"><ellipse rx="10" ry="20"/><ellipse rx="10" ry="20" transform="rotate(72)"/><ellipse rx="10" ry="20" transform="rotate(144)"/><ellipse rx="7" ry="16" transform="rotate(216)"/><ellipse rx="7" ry="16" transform="rotate(288)"/><circle r="4"/></g>
+      <circle cx="190" cy="36" r="5"/><circle cx="200" cy="30" r="3.5"/>
+      <path d="M30 196c20-4 40-2 56 6M28 178c-10-24-4-46 14-60"/>
+    </symbol>
+    <symbol id="leaf-sprig" viewBox="0 0 120 240" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M60 236C58 170 62 100 60 10"/>
+      <path d="M60 60c-18-4-30-18-30-34 16 0 28 14 30 34ZM60 60c18-4 30-18 30-34-16 0-28 14-30 34Z"/>
+      <path d="M60 120c-22-4-36-20-36-40 20 0 34 16 36 40ZM60 120c22-4 36-20 36-40-20 0-34 16-36 40Z"/>
+      <path d="M60 180c-22-4-36-20-36-40 20 0 34 16 36 40ZM60 180c22-4 36-20 36-40-20 0-34 16-36 40Z"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="proposal">🌸 Uma prévia feita com carinho por quem é cliente da Minami — <b>conceito de site para a Floricultura Minami</b></div>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a href="#topo" class="logo" aria-label="Floricultura Minami — início">
+      <span class="hanko" aria-hidden="true">南</span>
+      <span class="logo-txt"><b>Floricultura Minami</b><small>Centro · São Bernardo</small></span>
+    </a>
+    <nav class="menu" aria-label="Principal">
+      <a href="#flores">Flores</a>
+      <a href="#loja">A loja</a>
+      <a href="#como">Como encomendar</a>
+      <a href="#clientes">Clientes</a>
+      <a href="#visite">Visite</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="btn btn-primary" href="#flores">Escolher flores</a>
+      <button class="bag-btn" type="button" data-open-bag aria-label="Abrir sua encomenda">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1.2 11.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8L5 8Z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg>
+        <span class="count" id="navCount">0</span>
+      </button>
+      <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileMenu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 8h16M4 16h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+<nav class="mobile-menu" id="mobileMenu" aria-label="Menu móvel">
+  <a href="#flores">Flores</a>
+  <a href="#loja">A loja</a>
+  <a href="#como">Como encomendar</a>
+  <a href="#clientes">Clientes</a>
+  <a href="#visite">Visite</a>
+</nav>
+
+<main id="topo">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="reveal in">
+        <span class="eyebrow">Floricultura no Centro de São Bernardo</span>
+        <h1>Rosas de primeira linha, <em>montadas com carinho.</em></h1>
+        <p class="lead">Buquês, cestas e orquídeas com o preço mais justo do ABC. Agora você escolhe pelo site, monta sua encomenda e a gente entrega para quem você ama.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-rose" href="#flores">Montar minha encomenda</a>
+          <a class="btn btn-ghost" href="#loja">Conhecer a loja</a>
+        </div>
+        <div class="trust">
+          <div><b>4,8</b><span><span class="stars">★★★★★</span><br>104 avaliações no Google</span></div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.6"/><circle cx="17" cy="17.5" r="1.6"/></svg><span>Entrega para<br>quem você ama</span></div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></svg><span>Montado na hora,<br>do seu jeito</span></div>
+        </div>
+      </div>
+      <div class="hero-art reveal in">
+        <svg class="sprig s1"><use href="#rose-stem"/></svg>
+        <svg class="sprig s2"><use href="#leaf-sprig"/></svg>
+        <div class="arch-outline"></div>
+        <div class="arch"><img src="assets/buque-romance.jpg" alt="Buquê de rosas cor-de-rosa e brancas montado na Floricultura Minami"></div>
+        <div class="orb"><img src="assets/orquidea-cachepo.jpg" alt="Orquídea branca em cachepô de juta"></div>
+        <div class="float-card">
+          <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m12 3 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4 6.8 19.1l1-5.8L3.5 9.2l5.9-.9Z"/></svg></span>
+          <span><b>“Não troco por outra”</b><small>— cliente no Google</small></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Buquês de rosas</span><span>Cestas de flores</span><span>Orquídeas</span><span>Rosas azuis</span><span>Arranjos sob medida</span><span>Entrega no ABC</span>
+      <span>Buquês de rosas</span><span>Cestas de flores</span><span>Orquídeas</span><span>Rosas azuis</span><span>Arranjos sob medida</span><span>Entrega no ABC</span>
+    </div>
+  </div>
+
+  <!-- CATALOG -->
+  <section id="flores">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow">Nossas flores</span>
+          <h2>Escolha, adicione e <em>a gente monta.</em></h2>
+        </div>
+        <p>Fotos reais de arranjos feitos aqui na Minami. Adicione à sua encomenda, conte para quem é e envie tudo de uma vez pelo WhatsApp.</p>
+      </div>
+      <div class="filters reveal" role="tablist" aria-label="Filtrar flores">
+        <button class="filter on" data-f="all" role="tab" aria-selected="true">Todas</button>
+        <button class="filter" data-f="buques" role="tab" aria-selected="false">Buquês</button>
+        <button class="filter" data-f="arranjos" role="tab" aria-selected="false">Cestas & arranjos</button>
+        <button class="filter" data-f="orquideas" role="tab" aria-selected="false">Orquídeas</button>
+      </div>
+      <div class="catalog" id="catalog"></div>
+
+      <div class="custom reveal">
+        <svg class="ill"><use href="#orchid"/></svg>
+        <div>
+          <h3>Quer algo <em>só seu?</em></h3>
+          <p>Conte a ocasião, as cores e o quanto quer investir. A gente monta um arranjo exclusivo, do jeitinho que você imaginou.</p>
+          <div class="occasions">
+            <a href="#" data-wa="Olá, Minami! Quero um arranjo especial para um aniversário.">🎂 Aniversário</a>
+            <a href="#" data-wa="Olá, Minami! Quero um arranjo especial para uma data romântica.">❤️ Amor</a>
+            <a href="#" data-wa="Olá, Minami! Quero flores para pedir desculpas.">🙏 Desculpas</a>
+            <a href="#" data-wa="Olá, Minami! Quero flores para um nascimento.">👶 Nascimento</a>
+            <a href="#" data-wa="Olá, Minami! Quero um buquê de formatura.">🎓 Formatura</a>
+            <a href="#" data-wa="Olá, Minami! Gostaria de um arranjo de condolências.">🕊️ Condolências</a>
+          </div>
+        </div>
+        <a class="btn btn-rose" href="#" data-wa="Olá, Minami! Vim pelo site e quero montar um arranjo personalizado.">Criar meu arranjo</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORE -->
+  <section class="store" id="loja">
+    <div class="wrap store-grid">
+      <div class="store-photos reveal">
+        <div class="ph a"><img src="assets/loja-corredor.jpg" alt="Corredor da Floricultura Minami repleto de orquídeas, suculentas e plantas" loading="lazy"></div>
+        <div class="ph b"><img src="assets/loja-vitrine.jpg" alt="Vitrine colorida com rosas, girassóis e flores do campo" loading="lazy"></div>
+        <svg class="stamp" viewBox="0 0 120 120" aria-hidden="true">
+          <defs><path id="circ" d="M60 60m-46 0a46 46 0 1 1 92 0a46 46 0 1 1-92 0"/></defs>
+          <text font-size="10.5" letter-spacing="3.2" fill="currentColor" font-family="Figtree, sans-serif" font-weight="600"><textPath href="#circ">FLORES DE PRIMEIRA LINHA · CENTRO · SBC ·</textPath></text>
+          <text x="60" y="69" text-anchor="middle" font-size="26" fill="currentColor" font-family="'Noto Serif JP', serif" font-weight="700">南</text>
+        </svg>
+      </div>
+      <div class="reveal">
+        <span class="eyebrow">A loja</span>
+        <h2 style="margin-top:14px">Um corredor inteiro de flores <em>no coração da cidade.</em></h2>
+        <p>Na Rua Santa Filomena, a Minami é daquelas lojas que fazem você parar na porta: orquídeas, rosas, suculentas e plantas por todo lado. Quem entra uma vez vira cliente — e volta sempre.</p>
+        <div class="points">
+          <div class="point"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21c-4-3-7-6-7-10a5 5 0 0 1 7-4.6A5 5 0 0 1 19 11c0 4-3 7-7 10Z"/><path d="M12 6.4V21"/></svg></span><div><b>Rosas de primeira linha</b><span>Flores frescas e selecionadas, com variedade de cores e arranjos.</span></div></div>
+          <div class="point"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 12 12 20l-8-8V4h8Z"/><circle cx="8.5" cy="8.5" r="1.5"/></svg></span><div><b>O preço mais justo da região</b><span>É o que mais aparece nas avaliações: qualidade sem pesar no bolso.</span></div></div>
+          <div class="point"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 11V6a2 2 0 1 1 4 0v4M11 10V4a2 2 0 1 1 4 0v6M15 10V6a2 2 0 1 1 4 0v7a7 7 0 0 1-7 7h-1a6 6 0 0 1-5-2.7L4 15a2 2 0 0 1 3-2.6L7 13"/></svg></span><div><b>Atendimento que entende você</b><span>A gente escuta o que você imaginou e monta com todo o carinho.</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW TO ORDER -->
+  <section id="como">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow">Como encomendar</span>
+          <h2>Três passos até <em>o sorriso de alguém.</em></h2>
+        </div>
+        <p>Do celular, de casa ou do trabalho: a encomenda chega pronta no nosso WhatsApp e a gente confirma tudo com você.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal">
+          <svg viewBox="0 0 84 84" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M42 80V40"/><path d="M42 40c-10 0-17-8-15-18 2-8 9-13 15-13s13 5 15 13c2 10-5 18-15 18Z"/><path d="M34 22c2-5 6-7 10-6s6 5 5 9"/><path d="M42 62c-9 0-16-6-17-14 9 0 16 6 17 14ZM42 56c8 0 14-5 15-12-8 0-14 5-15 12Z"/></svg>
+          <span class="n">primeiro</span><h3>Escolha</h3><p>Navegue pelas flores e toque em “Adicionar” nas que você mais gostar. Pode misturar à vontade.</p>
+        </div>
+        <div class="step reveal">
+          <svg viewBox="0 0 84 84" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="10" y="22" width="64" height="44" rx="5"/><path d="m10 26 32 22 32-22"/><path d="M42 44c-3-3-8-2-8 2 0 4 8 8 8 8s8-4 8-8c0-4-5-5-8-2Z"/></svg>
+          <span class="n">depois</span><h3>Personalize</h3><p>Diga para quem é, a data, se é entrega ou retirada — e escreva a mensagem do cartão.</p>
+        </div>
+        <div class="step reveal">
+          <svg viewBox="0 0 84 84" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="14" y="34" width="56" height="40" rx="4"/><path d="M10 26h64v10H10zM42 26v48"/><path d="M42 26c-6-10-18-12-18-4 0 6 12 4 18 4ZM42 26c6-10 18-12 18-4 0 6-12 4-18 4Z"/></svg>
+          <span class="n">e pronto</span><h3>Receba</h3><p>A gente confirma pelo WhatsApp, monta na hora e entrega — ou separa para você retirar na loja.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="reviews" id="clientes">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow">Quem conhece, volta</span>
+          <h2>Histórias que <em>florescem</em> aqui.</h2>
+        </div>
+        <div class="rating-big"><b>4,8</b><div><span class="stars">★★★★★</span><small>104 avaliações no Google</small></div></div>
+      </div>
+      <div class="wall">
+        <div class="quote feature reveal"><q>Já ganhei muitas flores de presente dessa floricultura e também já dei… ótimo preço e qualidade das flores, não troco por outra floricultura!</q><div class="who"><span class="av" style="background:var(--rose)">A</span>Ana Clara Z. · Google</div></div>
+        <figure class="moment reveal"><img src="assets/cliente-2.jpg" alt="Buquê de rosas vermelhas e brancas com mosquitinho na casa de uma cliente" loading="lazy"><span>Quem recebeu 💐</span></figure>
+        <div class="quote reveal"><q>O melhor preço da região, rosas de primeira linha e variedades de arranjos.</q><div class="who"><span class="av" style="background:var(--forest)">D</span>Cliente · Google</div></div>
+        <div class="quote reveal"><q>Fui bem atendida e acolhida. Senhor que me atendeu… me recebeu e montou meu arranjo com todo carinho. Se deem flores, sempre!</q><div class="who"><span class="av" style="background:var(--gold)">M</span>Manuela L. · Google</div></div>
+        <figure class="moment reveal"><img src="assets/cliente-1.jpg" alt="Arranjo de alstroemérias e mosquitinho em vaso de vidro na casa de um cliente" loading="lazy"><span>Direto da Minami 🌸</span></figure>
+        <div class="quote reveal"><q>Sr. Leonardo, excelente atendimento. Entendeu certinho o que eu esperava do meu buquê de flores! Eu amei!</q><div class="who"><span class="av" style="background:var(--rose)">S</span>Shirley S. · Google</div></div>
+        <div class="quote reveal"><q>Melhor lugar de flores do ABC, preços ótimos e lindas flores sempre!</q><div class="who"><span class="av" style="background:var(--forest)">C</span>Cliente · Google</div></div>
+        <figure class="moment reveal"><img src="assets/cliente-3.jpg" alt="Duas rosas vermelhas em vaso na casa de um cliente" loading="lazy"><span>Simples e lindo ❤️</span></figure>
+        <div class="quote reveal"><q>Atendimento top, liguei pedindo pra entrega a uma amiga e correu tudo certo.</q><div class="who"><span class="av" style="background:var(--gold)">N</span>Cliente · Google</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <section id="visite">
+    <div class="wrap visit-grid">
+      <div class="visit-card reveal">
+        <div>
+          <span class="eyebrow">Visite a loja</span>
+          <h2 style="margin-top:14px">Venha sentir <em>o perfume.</em></h2>
+        </div>
+        <div class="info">
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg><p><b>Endereço</b><a href="https://www.google.com/maps/search/?api=1&query=Floricultura+Minami+R.+Santa+Filomena+305+S%C3%A3o+Bernardo+do+Campo" target="_blank" rel="noopener">R. Santa Filomena, 305 · Centro<br>São Bernardo do Campo – SP · 09710-060</a></p></div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><p><b>Horário</b><span>Atendimento até as 19h — ligue para confirmar o horário do dia.</span></p></div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><p><b>Telefone & WhatsApp</b><a href="tel:+551143303321">(11) 4330-3321</a></p></div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.6"/><circle cx="17" cy="17.5" r="1.6"/></svg><p><b>Entrega</b><span>Levamos suas flores até quem você ama. Consulte a sua região.</span></p></div>
+        </div>
+        <a class="btn btn-primary" style="align-self:flex-start" href="https://www.google.com/maps/dir/?api=1&destination=R.+Santa+Filomena,+305+-+Centro,+S%C3%A3o+Bernardo+do+Campo+-+SP,+09710-060" target="_blank" rel="noopener">Como chegar →</a>
+      </div>
+      <div class="map reveal">
+        <iframe title="Mapa da Floricultura Minami" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Floricultura+Minami,+R.+Santa+Filomena,+305+-+Centro,+S%C3%A3o+Bernardo+do+Campo+-+SP&z=17&output=embed"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <div class="closing">
+    <div class="wrap">
+      <div class="band reveal">
+        <svg class="sprig"><use href="#rose-stem"/></svg>
+        <h2>Tem alguém esperando <em>uma surpresa</em> hoje.</h2>
+        <a class="btn" href="#flores">Escolher as flores</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="#topo" class="logo" aria-label="Floricultura Minami — voltar ao topo">
+      <span class="hanko" aria-hidden="true">南</span>
+      <span class="logo-txt"><b>Floricultura Minami</b><small>Centro · São Bernardo</small></span>
+    </a>
+    <span>© 2026 Floricultura Minami · R. Santa Filomena, 305 – Centro, São Bernardo do Campo</span>
+    <p class="credit">Prévia criada com carinho por <b>Ribeiro &amp; Bernardini</b> — dois clientes que um dia procuraram a Minami na internet e sonharam com este site.</p>
+  </div>
+</footer>
+
+<!-- Floating -->
+<button class="bag-pill" id="bagPill" type="button" data-open-bag>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1.2 11.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8L5 8Z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg>
+  Ver sua encomenda <i id="pillCount">0</i>
+</button>
+<a class="fab" href="#" data-wa="Olá, Minami! Vim pelo site e gostaria de fazer uma encomenda." aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm5.8 14.03c-.25.69-1.44 1.32-1.98 1.37-.51.05-.99.24-3.33-.69-2.81-1.11-4.6-3.98-4.74-4.17-.14-.18-1.12-1.49-1.12-2.85 0-1.35.71-2.02.96-2.29.25-.28.55-.35.73-.35l.53.01c.17.01.4-.06.62.48.23.55.78 1.9.85 2.04.07.14.11.3.02.48-.09.18-.14.3-.28.46-.14.16-.29.36-.41.48-.14.14-.28.29-.12.57.16.28.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.22 1.37.28.14.44.12.6-.07.16-.18.69-.81.88-1.09.18-.28.37-.23.62-.14.25.09 1.6.76 1.88.9.28.14.46.21.53.32.07.12.07.67-.18 1.36Z"/></svg>
+</a>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<!-- Order drawer -->
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-label="Sua encomenda" aria-hidden="true">
+  <div class="drawer-head">
+    <h3>Sua encomenda</h3>
+    <button class="x" type="button" id="closeBag" aria-label="Fechar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  </div>
+  <div class="drawer-body">
+    <div id="lines"></div>
+    <form class="form" id="orderForm" autocomplete="off">
+      <label>Para quem são as flores?<input id="fTo" placeholder="Ex.: Mariana"></label>
+      <label>Ocasião
+        <select id="fOcc"><option value="">Escolha…</option><option>Aniversário</option><option>Amor / namoro</option><option>Pedido de desculpas</option><option>Nascimento</option><option>Formatura</option><option>Agradecimento</option><option>Condolências</option><option>Só porque sim 💐</option></select>
+      </label>
+      <label>Para quando?<input id="fDate" type="date"></label>
+      <div class="seg" role="radiogroup" aria-label="Entrega ou retirada">
+        <input type="radio" name="how" id="hEnt" value="Entrega" checked><label for="hEnt">🚚 Entrega</label>
+        <input type="radio" name="how" id="hRet" value="Retirada na loja"><label for="hRet">🏪 Retirar na loja</label>
+      </div>
+      <label id="addrWrap">Bairro / endereço de entrega<input id="fAddr" placeholder="Ex.: Rudge Ramos, São Bernardo"></label>
+      <label>Mensagem do cartão<textarea id="fMsg" placeholder="Escreva aqui o que o seu coração quer dizer…"></textarea></label>
+    </form>
+  </div>
+  <div class="drawer-foot">
+    <button class="btn btn-rose" type="button" id="sendOrder">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Z"/></svg>
+      Enviar encomenda pelo WhatsApp
+    </button>
+    <small>Prefere falar com a gente? <a href="tel:+551143303321">Ligue (11) 4330-3321</a></small>
+  </div>
+</aside>
+
+<script>
+  // WhatsApp da loja (confirmar com o cliente)
+  const WA = '551143303321';
+  const waLink = t => 'https://wa.me/' + WA + '?text=' + encodeURIComponent(t);
+  document.querySelectorAll('[data-wa]').forEach(a => { a.href = waLink(a.dataset.wa); a.target = '_blank'; a.rel = 'noopener'; });
+
+  // Catalog (fotos reais da Floricultura Minami)
+  const ITEMS = [
+    {id:'romance', nome:'Buquê Romance', desc:'Rosas cor-de-rosa e brancas com alstroemérias e mosquitinho.', img:'buque-romance.jpg', cat:'buques', tag:'Mais amado', rose:true},
+    {id:'paixao', nome:'Buquê Paixão', desc:'Rosas vermelhas de primeira linha com folhagens frescas.', img:'rosas-vermelhas.jpg', cat:'buques', pos:'50% 72%'},
+    {id:'cesta-vermelha', nome:'Cesta de Rosas Vermelhas', desc:'Arranjo alto em cesta com laço — o clássico que emociona.', img:'cesta-rosas-vermelhas.jpg', cat:'arranjos', tag:'Clássico'},
+    {id:'delicadeza', nome:'Buquê Delicadeza', desc:'Rosas claras e alstroemérias brancas com laço de cetim.', img:'buque-delicadeza.jpg', cat:'buques'},
+    {id:'orquidea', nome:'Orquídea no Cachepô', desc:'Phalaenopsis branca em cachepô de juta. Elegância que dura.', img:'orquidea-cachepo.jpg', cat:'orquideas'},
+    {id:'azuis', nome:'Rosas Azuis', desc:'Para surpreender de verdade: rosas azuis com mosquitinho.', img:'rosas-azuis.jpg', cat:'buques', tag:'Especial', rose:true},
+    {id:'cesta-amarela', nome:'Cesta de Rosas Amarelas', desc:'Alegria e amizade em forma de arranjo, com laço branco.', img:'cesta-rosas-amarelas.jpg', cat:'arranjos', pos:'50% 55%'},
+    {id:'orquidea-vidro', nome:'Orquídea no Vidro', desc:'Phalaenopsis branca em vaso de vidro com casca de pinus.', img:'orquidea-vidro.jpg', cat:'orquideas', pos:'50% 62%'},
+    {id:'encanto', nome:'Buquê Encanto', desc:'Rosas rosa e brancas em formato redondo — lindo para noivas e formaturas.', img:'buque-rosa-branco.jpg', cat:'buques'}
+  ];
+  const plus = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>';
+  const check = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg>';
+  const catalog = document.getElementById('catalog');
+  catalog.innerHTML = ITEMS.map(it => `
+    <article class="item reveal" data-cat="${it.cat}">
+      <div class="item-img">
+        <img src="assets/${it.img}" alt="${it.nome} — ${it.desc}" loading="lazy"${it.pos ? ` style="object-position:${it.pos}"` : ''}>
+        ${it.tag ? `<span class="tag ${it.rose ? 'rose' : ''}">${it.tag}</span>` : ''}
+        <button class="add" type="button" data-add="${it.id}" aria-label="Adicionar ${it.nome} à encomenda">${plus}<span>Adicionar</span></button>
+      </div>
+      <div class="item-body">
+        <h3>${it.nome}</h3>
+        <p>${it.desc}</p>
+        <div class="meta"><span>Valor sob consulta</span><span>Foto real · Minami</span></div>
+      </div>
+    </article>`).join('');
+
+  // Filters
+  document.querySelectorAll('.filter').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('.filter').forEach(x => { x.classList.toggle('on', x === b); x.setAttribute('aria-selected', x === b); });
+    document.querySelectorAll('.item').forEach(el => el.classList.toggle('hide', b.dataset.f !== 'all' && el.dataset.cat !== b.dataset.f));
+  }));
+
+  // Bag
+  const bag = {};
+  const total = () => Object.values(bag).reduce((a, b) => a + b, 0);
+  const toast = document.getElementById('toast');
+  let tt;
+  function showToast(t){ toast.textContent = t; toast.classList.add('show'); clearTimeout(tt); tt = setTimeout(() => toast.classList.remove('show'), 2200); }
+  function render(){
+    const n = total();
+    ['navCount','pillCount'].forEach(id => { const el = document.getElementById(id); el.textContent = n; });
+    const nc = document.getElementById('navCount'); nc.classList.toggle('show', n > 0); nc.classList.remove('bump'); void nc.offsetWidth; if (n) nc.classList.add('bump');
+    document.getElementById('bagPill').classList.toggle('show', n > 0);
+    document.querySelectorAll('[data-add]').forEach(b => {
+      const q = bag[b.dataset.add] || 0;
+      b.classList.toggle('added', q > 0);
+      b.innerHTML = q ? check + '<span>Adicionado' + (q > 1 ? ' · ' + q : '') + '</span>' : plus + '<span>Adicionar</span>';
+    });
+    const lines = document.getElementById('lines');
+    if (!n) {
+      lines.innerHTML = '<div class="empty"><svg><use href="#leaf-sprig"/></svg><p>Sua encomenda ainda está vazia.<br>Escolha suas flores favoritas ou descreva o arranjo dos seus sonhos na mensagem.</p></div>';
+    } else {
+      lines.innerHTML = Object.entries(bag).map(([id, q]) => {
+        const it = ITEMS.find(i => i.id === id);
+        return `<div class="line"><img src="assets/${it.img}" alt=""><span class="nm">${it.nome}</span><span class="qty"><button type="button" data-dec="${id}" aria-label="Diminuir">−</button><span>${q}</span><button type="button" data-inc="${id}" aria-label="Aumentar">+</button></span></div>`;
+      }).join('');
+    }
+  }
+  document.addEventListener('click', e => {
+    const add = e.target.closest('[data-add]'), inc = e.target.closest('[data-inc]'), dec = e.target.closest('[data-dec]');
+    if (add) { const id = add.dataset.add; bag[id] = (bag[id] || 0) + 1; render(); showToast('🌸 ' + ITEMS.find(i => i.id === id).nome + ' na sua encomenda'); }
+    if (inc) { bag[inc.dataset.inc]++; render(); }
+    if (dec) { const id = dec.dataset.dec; bag[id]--; if (bag[id] <= 0) delete bag[id]; render(); }
+    if (e.target.closest('[data-open-bag]')) openBag();
+  });
+  const drawer = document.getElementById('drawer'), scrim = document.getElementById('scrim');
+  function openBag(){ drawer.classList.add('open'); scrim.classList.add('open'); drawer.setAttribute('aria-hidden','false'); document.body.classList.add('drawer-open'); setTimeout(() => document.getElementById('closeBag').focus(), 300); }
+  function closeBag(){ drawer.classList.remove('open'); scrim.classList.remove('open'); drawer.setAttribute('aria-hidden','true'); document.body.classList.remove('drawer-open'); }
+  document.getElementById('closeBag').addEventListener('click', closeBag);
+  scrim.addEventListener('click', closeBag);
+  addEventListener('keydown', e => { if (e.key === 'Escape') closeBag(); });
+  document.querySelectorAll('input[name="how"]').forEach(r => r.addEventListener('change', () => {
+    document.getElementById('addrWrap').style.display = document.getElementById('hEnt').checked ? '' : 'none';
+  }));
+  document.getElementById('sendOrder').addEventListener('click', () => {
+    const v = id => document.getElementById(id).value.trim();
+    const how = document.querySelector('input[name="how"]:checked').value;
+    let t = 'Olá, Minami! 🌸 Quero fazer uma encomenda pelo site:\n\n';
+    const n = total();
+    if (n) Object.entries(bag).forEach(([id, q]) => { t += `• ${q}x ${ITEMS.find(i => i.id === id).nome}\n`; });
+    else t += '• Um arranjo personalizado (vou explicar abaixo)\n';
+    t += '\n';
+    if (v('fTo')) t += `Para: ${v('fTo')}\n`;
+    if (v('fOcc')) t += `Ocasião: ${v('fOcc')}\n`;
+    if (v('fDate')) { const [y, m, d] = v('fDate').split('-'); t += `Data: ${d}/${m}/${y}\n`; }
+    t += `${how === 'Entrega' ? '🚚' : '🏪'} ${how}${how === 'Entrega' && v('fAddr') ? ' — ' + v('fAddr') : ''}\n`;
+    if (v('fMsg')) t += `\nMensagem do cartão:\n“${v('fMsg')}”\n`;
+    t += '\nPode me passar os valores? Obrigado! 💐';
+    window.open(waLink(t), '_blank', 'noopener');
+  });
+  render();
+
+  // Nav, menu, reveal
+  const nav = document.getElementById('nav');
+  addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 10), {passive:true});
+  const burger = document.getElementById('burger'), mm = document.getElementById('mobileMenu');
+  burger.addEventListener('click', () => { mm.style.top = nav.getBoundingClientRect().bottom + 'px'; const open = mm.classList.toggle('open'); burger.setAttribute('aria-expanded', open); });
+  mm.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { mm.classList.remove('open'); burger.setAttribute('aria-expanded', false); }));
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), {threshold:.1, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal:not(.in)').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
